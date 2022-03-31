@@ -5,8 +5,7 @@ import static org.testng.Assert.assertEquals;
 
 public class QuadraticTrinominalTest {
     QuadraticTrinominal first = new QuadraticTrinominal(1, 2, 1);
-    QuadraticTrinominal third = new QuadraticTrinominal(2, 2, 2);
-
+    QuadraticTrinominal fourth = new QuadraticTrinominal(2, -7, 3);
 
     @Test
     public void FirstTest(){
@@ -17,14 +16,18 @@ public class QuadraticTrinominalTest {
     @Test (expectedExceptions = {IllegalArgumentException.class})
     public void SecondTest(){
         QuadraticTrinominal second = new QuadraticTrinominal(0, -2, 1);
-//        double[] answer = {3, 0.5};
-//        assertEquals(second.decision(), answer);
     }
 
     @Test(expectedExceptions = {IllegalArgumentException.class})
     public void ThirdTest(){
-        if(third.decision().length > 2){
-            throw new IllegalArgumentException();
-        }
+        QuadraticTrinominal third = new QuadraticTrinominal(2, 2, 2);
+        double[] answer = {0};
+        assertEquals(third.decision(), answer);
+    }
+
+    @Test
+    public void FourthTest(){
+        double[] answer = {3, 0.5};
+        assertEquals(fourth.decision(), answer);
     }
 }

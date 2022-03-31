@@ -1,26 +1,28 @@
 package quad;
 
+import java.util.Arrays;
+
 public class QuadraticTrinominal {
     private double a;
     private double b;
     private double c;
 
     public QuadraticTrinominal(double a, double b, double c){
-        if(Double.compare(a,0)==0){
-            throw new IllegalArgumentException("asdasdasd");
+        if(Double.compare(a, 0) == 0){
+            throw new IllegalArgumentException("Not quadratic trinominal");
         }
-        this.a=a;
+        this.a = a;
         this.b = b;
         this.c = c;
     }
 
     public double[] decision(){
+        if(Double.compare(a, b) == 0 && Double.compare(b, c) == 0){
+            throw new IllegalArgumentException("Infinity roots");
+        }
         double descr = b*b - 4*a*c;
         if(descr < 0){
-            return new double[]{0, 0, 0};
-        }
-        if(a == b && b == c){
-            return new double[]{0, 0, 0, 0, 0};
+            throw new IllegalArgumentException("Equation without roots");
         }
         double x1 = (-b + Math.sqrt(descr))/(2*a);
         double x2 = (-b - Math.sqrt(descr))/(2*a);
